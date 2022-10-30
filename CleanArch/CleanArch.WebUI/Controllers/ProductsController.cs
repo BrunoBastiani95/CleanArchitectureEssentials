@@ -1,6 +1,6 @@
 ﻿using CleanArch.Application.DTOs;
 using CleanArch.Application.Interfaces;
-using CleanArch.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -11,7 +11,7 @@ namespace CleanArch.WebUI.Controllers
         private readonly IProductService _productService;
         private readonly ICategoryService _CategoryService;
         private readonly IWebHostEnvironment _environment;
-        public ProductsController(IProductService productService, 
+        public ProductsController(IProductService productService,
             ICategoryService categoryService, IWebHostEnvironment environment)
         {
             _productService = productService;
@@ -55,7 +55,7 @@ namespace CleanArch.WebUI.Controllers
             var productDto = await _productService.GetByIdAsync(id);
             if (productDto == null) return NotFound();
 
-            ViewBag.CategoryId = 
+            ViewBag.CategoryId =
                 new SelectList(await _CategoryService.GetCategoriesAsync(), "Id", "Name");
             return View(productDto);
         }
@@ -72,6 +72,7 @@ namespace CleanArch.WebUI.Controllers
             return View(productDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         public async Task<IActionResult> Delete(int? id)
         {
