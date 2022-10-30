@@ -2,7 +2,6 @@
 using CleanArch.Domain.Interfaces;
 using CleanArch.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CleanArch.Infra.Data.Repositories
 {

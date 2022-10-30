@@ -17,7 +17,7 @@ namespace CleanArch.Application.Products.Handlers
         {
             var product = await _productRepository.GetByIdAsync(request.Id);
 
-            if(product == null)
+            if (product == null)
             {
                 throw new ApplicationException($"Entity could not be found.");
             }

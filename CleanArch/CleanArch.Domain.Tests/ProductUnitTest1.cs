@@ -60,7 +60,7 @@ namespace CleanArch.Domain.Tests
         public void CreateProduct_MissingNameValue_DomainExceptionRequiredName()
         {
             var id = 1;
-            var name =string.Empty;
+            var name = string.Empty;
             var description = "Product Description";
             var price = 1.50m;
             var stock = 1;
