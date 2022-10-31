@@ -1,4 +1,5 @@
 using CleanArch.Infra.IoC;
+using CleanArchMvc.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddInfrastructureAPI(builder.Configuration);
 //ativar autenticacao e validar o token
 builder.Services.AddInfrastructureJWT(builder.Configuration);
-//builder.Services.AddInfrastructureSwagger();
+builder.Services.AddInfrastructureSwagger();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
